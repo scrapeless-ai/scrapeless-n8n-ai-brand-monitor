@@ -65,11 +65,11 @@ One prompt submits two remote collection tasks and produces two observations in 
 
 [![Actual n8n canvas after one live prompt completed on both engines](assets/workflow-canvas.png)](assets/workflow-canvas.png)
 
-*Actual n8n canvas from the live validation on 2026-11-03. Both branches completed and the report merged two observations. Open the image for the full-resolution view.*
+*Actual n8n canvas from the live validation. Both branches completed and the report merged two observations. Open the image for the full-resolution view.*
 
 ### 4. Turn on daily monitoring
 
-In **Daily Schedule**, set the hour and minute. The imported default is **01:00 UTC**. Change the workflow timezone in **Settings** if needed, then publish the workflow after the manual run. Publishing starts the schedule. Each daily run submits two remote tasks per prompt. Use **Executions** to open scheduled results and download their files.
+In **Daily Schedule**, set the hour and minute. Change the workflow timezone in **Settings** if needed, then publish the workflow after the manual run. Publishing starts the schedule. Each daily run submits two remote tasks per prompt. Use **Executions** to open scheduled results and download their files.
 
 ### 5. Optional offline demo
 
@@ -118,7 +118,7 @@ The comparison uses the latest earlier saved run for the same brand, aliases, do
 
 ### Live case: does Scrapeless make the AI shortlist?
 
-On November 4, 2026, the updated workflow sent the same three English questions to ChatGPT and Perplexity with the country set to `US` and Web Search requested on both engines. All six observations succeeded. The report was saved in n8n as the first baseline for this question set.
+The updated workflow sent the same three English questions to ChatGPT and Perplexity with the country set to `US` and Web Search requested on both engines. All six observations succeeded. The report was saved in n8n as the first baseline for this question set.
 
 - **Product page API shortlist.** An operations team needs daily competitor price and stock data, so an engineer asks AI which vendors to evaluate. The prompt gives the job and the JavaScript requirement. It shows whether Scrapeless comes up when a buyer searches the category without naming it.
 
@@ -177,11 +177,11 @@ Merge Observations -> Build Report -> Save Run -> Read Saved Report
   -> Flatten CSV Rows -> Download CSV Observations
 ```
 
-`Prepare Prompts` creates one item per question and attaches the run id, UTC start time, brand, aliases and domains. Each normalization node uses n8n item linking to recover the corresponding context after the Scrapeless node returns actor data.
+`Prepare Prompts` creates one item per question and attaches the run id, brand, aliases and domains. Each normalization node uses n8n item linking to recover the corresponding context after the Scrapeless node returns actor data.
 
 The two actors expose `result_text` for the answer but use different source fields. See the [ChatGPT reference](https://docs.scrapeless.com/en/docs/ai-scraper/scrapers/chatgpt/?utm_source=github&utm_medium=referral&utm_campaign=scrapeless-n8n-ai-brand-monitor&utm_content=repository-readme) and [Perplexity reference](https://docs.scrapeless.com/en/docs/ai-scraper/scrapers/perplexity/?utm_source=github&utm_medium=referral&utm_campaign=scrapeless-n8n-ai-brand-monitor&utm_content=repository-readme) for the owning response contracts.
 
-The installed community node creates an asynchronous task and polls its result every 15 seconds. Its successful output is the actor's result object; it does not preserve the outer task-status envelope or task id in that successful output. This workflow relies on that node behavior and does not add another polling loop.
+The installed community node creates an asynchronous task and polls its result periodically. Its successful output is the actor's result object; it does not preserve the outer task-status envelope or task id in that successful output. This workflow relies on that node behavior and does not add another polling loop.
 
 The analysis module exposes `validateConfig`, `preparePrompts`, `normalizeObservation`, `buildReport` and `flattenCsvRows`. The generator embeds these functions into the n8n Code nodes so the importable JSON runs without a local checkout. `Merge Observations` appends the normalized items. The report uses valid answers for mention rate and valid answers with parseable source lists for source hit rate.
 
@@ -189,7 +189,7 @@ The analysis module exposes `validateConfig`, `preparePrompts`, `normalizeObserv
 
 The Scrapeless nodes use **On Error > Continue (using regular output)** and have no automatic retries. The normalizers record an error without exporting raw exception details. Inspect the private n8n execution for diagnostics.
 
-The whole workflow has a **600-second execution timeout**. The community node itself has no bounded polling loop. A stalled task or large prompt panel can exhaust the shared timeout; no complete report is promised for an interrupted execution. Stopping n8n does not cancel submitted remote tasks. Check the existing execution before manually rerunning it.
+The whole workflow has an execution timeout. The community node itself has no bounded polling loop. A stalled task or large prompt panel can exhaust the shared timeout; no complete report is promised for an interrupted execution. Stopping n8n does not cancel submitted remote tasks. Check the existing execution before manually rerunning it.
 
 | Symptom | Action |
 | --- | --- |
@@ -222,7 +222,7 @@ npm run check
 Validation covers both engine branches and the file exports.
 
 - Real file import, expression mapping, native-node execution and both binary downloads in n8n 2.35.7.
-- On 2026-11-03, one live prompt through both actors produced two valid answers and parseable source lists with 6 ChatGPT and 10 Perplexity unique returned URLs. The [sanitized validation summary](examples/live-validation-summary.json) omits answer text and source identities. The November 4 buyer-question run also verified saving the live baseline and downloading both files in the updated workflow.
+- One live prompt through both actors produced two valid answers and parseable source lists with 6 ChatGPT and 10 Perplexity unique returned URLs. The [sanitized validation summary](examples/live-validation-summary.json) omits answer text and source identities. The buyer-question run also verified saving the live baseline and downloading both files in the updated workflow.
 - Synthetic runs in n8n 2.35.7 verified initial baselines, persisted history, detected changes, and both export nodes.
 - 25 automated tests cover normalization, HTML markup, domain matching, error states, report completeness, export structure, and comparison. The updated normalizer was also checked against retained real responses without new collection calls.
 
