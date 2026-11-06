@@ -1,0 +1,120 @@
+{
+  "description": "Selected fields from one live run. Candidate names were read from the answers. Domain matches are from returned sources.",
+  "observation_date": "2026-11-04",
+  "data_mode": "live",
+  "brand": "Scrapeless",
+  "country": "US",
+  "domains": [
+    "scrapeless.com"
+  ],
+  "web_search_requested": true,
+  "report_complete": true,
+  "all_answers_valid": true,
+  "observation_count": 6,
+  "baseline": true,
+  "prompts": [
+    {
+      "id": "product-page-api-shortlist",
+      "text": "Our small team needs to check competitor product prices and stock daily. Some product pages render with JavaScript. Which three managed web scraping APIs should we shortlist, and why? Link to the official product pages.",
+      "names_monitored_brand": false,
+      "observations": [
+        {
+          "engine": "chatgpt",
+          "status": "ok",
+          "brand_mentioned": false,
+          "source_field": "content_references",
+          "source_status": "available",
+          "source_count": 6,
+          "brand_source_found": false,
+          "brand_domain_source_url_count": 0,
+          "recommended_options_from_answer": [
+            "Zyte API",
+            "Bright Data Web Scraper API",
+            "ScrapingBee"
+          ]
+        },
+        {
+          "engine": "perplexity",
+          "status": "ok",
+          "brand_mentioned": false,
+          "source_field": "web_results",
+          "source_status": "available",
+          "source_count": 10,
+          "brand_source_found": false,
+          "brand_domain_source_url_count": 0,
+          "recommended_options_from_answer": [
+            "Decodo Price Scraper API",
+            "ScrapingBee",
+            "ZenRows"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "apify-alternatives",
+      "text": "We use Apify to collect public web data. What are three alternatives worth considering if we need JavaScript rendering and managed proxies without running browsers ourselves? Explain who each one fits and link to the official pages.",
+      "names_monitored_brand": false,
+      "observations": [
+        {
+          "engine": "chatgpt",
+          "status": "ok",
+          "brand_mentioned": false,
+          "source_field": "content_references",
+          "source_status": "available",
+          "source_count": 8,
+          "brand_source_found": false,
+          "brand_domain_source_url_count": 0,
+          "recommended_options_from_answer": [
+            "Zyte API",
+            "Bright Data",
+            "ScrapingBee"
+          ]
+        },
+        {
+          "engine": "perplexity",
+          "status": "ok",
+          "brand_mentioned": false,
+          "source_field": "web_results",
+          "source_status": "available",
+          "source_count": 10,
+          "brand_source_found": false,
+          "brand_domain_source_url_count": 0,
+          "recommended_options_from_answer": [
+            "ScraperAPI",
+            "ScrapingBee",
+            "Oxylabs"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scrapeless-n8n-evaluation",
+      "text": "Can I use Scrapeless with n8n to collect ChatGPT and Perplexity answers and their sources for brand monitoring? What should I set up first? Link to the relevant official documentation.",
+      "names_monitored_brand": true,
+      "observations": [
+        {
+          "engine": "chatgpt",
+          "status": "ok",
+          "brand_mentioned": true,
+          "source_field": "content_references",
+          "source_status": "available",
+          "source_count": 10,
+          "brand_source_found": true,
+          "brand_domain_source_url_count": 8,
+          "recommended_options_from_answer": null
+        },
+        {
+          "engine": "perplexity",
+          "status": "ok",
+          "brand_mentioned": true,
+          "source_field": "web_results",
+          "source_status": "available",
+          "source_count": 10,
+          "brand_source_found": true,
+          "brand_domain_source_url_count": 6,
+          "recommended_options_from_answer": null
+        }
+      ]
+    }
+  ]
+}

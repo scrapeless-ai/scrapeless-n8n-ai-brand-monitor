@@ -1,0 +1,24 @@
+{
+  "brand": "Scrapeless",
+  "aliases": [
+    "Scrapeless"
+  ],
+  "domains": [
+    "scrapeless.com"
+  ],
+  "country": "US",
+  "prompts": [
+    {
+      "id": "product-page-api-shortlist",
+      "text": "Our small team needs to check competitor product prices and stock daily. Some product pages render with JavaScript. Which three managed web scraping APIs should we shortlist, and why? Link to the official product pages."
+    },
+    {
+      "id": "apify-alternatives",
+      "text": "We use Apify to collect public web data. What are three alternatives worth considering if we need JavaScript rendering and managed proxies without running browsers ourselves? Explain who each one fits and link to the official pages."
+    },
+    {
+      "id": "scrapeless-n8n-evaluation",
+      "text": "Can I use Scrapeless with n8n to collect ChatGPT and Perplexity answers and their sources for brand monitoring? What should I set up first? Link to the relevant official documentation."
+    }
+  ]
+}

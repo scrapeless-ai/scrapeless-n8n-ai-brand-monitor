@@ -1,0 +1,12 @@
+{
+  "brand": "Company A",
+  "aliases": ["Company A", "Company-A"],
+  "domains": ["example.com"],
+  "country": "US",
+  "prompts": [
+    {
+      "id": "selection-criteria",
+      "text": "What criteria should a small engineering team compare when choosing a service for collecting public web data? Explain the tradeoffs and cite sources."
+    }
+  ]
+}

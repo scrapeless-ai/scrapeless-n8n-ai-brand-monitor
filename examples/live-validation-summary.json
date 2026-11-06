@@ -1,0 +1,31 @@
+{
+  "evidence_type": "Sanitized projection of a real n8n execution; answer text and source URLs omitted.",
+  "observed_at": "2026-11-03T06:53:33.831Z",
+  "n8n_version": "2.35.7",
+  "scrapeless_node_version": "0.5.4",
+  "prompt_count": 1,
+  "target": "Company A (example configuration, not a real brand visibility study)",
+  "execution_status": "success",
+  "report_complete": true,
+  "all_answers_valid": true,
+  "engines": [
+    {
+      "engine": "chatgpt",
+      "status": "ok",
+      "source_field": "content_references",
+      "source_status": "available",
+      "unique_returned_source_count": 6
+    },
+    {
+      "engine": "perplexity",
+      "status": "ok",
+      "source_field": "web_results",
+      "source_status": "available",
+      "unique_returned_source_count": 10
+    }
+  ],
+  "limits": [
+    "One run does not establish scheduled reliability or exposure trends.",
+    "Positive brand matching is demonstrated with synthetic fixtures."
+  ]
+}
