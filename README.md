@@ -116,24 +116,22 @@ Open **Build Report > JSON > comparison** to see the previous run and the change
 
 The comparison uses the latest earlier saved run for the same brand, aliases, domains, country and exact prompt set. A change to these inputs starts a new baseline. Keep the engine node settings consistent across runs.
 
-### Live case: does Scrapeless make the AI shortlist?
+### Live case: which smartphone brands appear in AI answers?
 
-The updated workflow sent the same three English questions to ChatGPT and Perplexity with the country set to `US` and Web Search requested on both engines. All six observations succeeded. The report was saved in n8n as the first baseline for this question set.
+The same three English questions were sent through the workflow's native ChatGPT and Perplexity nodes with country `US` and Web Search requested. All six observations had valid answers and parseable returned-source lists. The report was saved in n8n as a new baseline.
 
-- **Product page API shortlist.** An operations team needs daily competitor price and stock data, so an engineer asks AI which vendors to evaluate. The prompt gives the job and the JavaScript requirement. It shows whether Scrapeless comes up when a buyer searches the category without naming it.
-
-- **Apify alternatives.** A team already uses Apify and wants a managed service for JavaScript rendering and proxies. Naming its current provider reflects how people ask about switching tools. The resulting shortlist shows whether Scrapeless comes up during that evaluation.
+The monitored brand was Samsung, with `samsung.com` as its domain. The first two questions asked about smartphone brands without naming Samsung. The third named Samsung and asked where a US buyer can verify update policies, warranty and repair options.
 
 | Question | ChatGPT recommendations | Perplexity recommendations |
 | --- | --- | --- |
-| Product page price and stock API shortlist | Zyte API, Bright Data Web Scraper API, ScrapingBee | Decodo Price Scraper API, ScrapingBee, ZenRows |
-| Apify alternatives | Zyte API, Bright Data, ScrapingBee | ScraperAPI, ScrapingBee, Oxylabs |
+| Smartphone brands under $1,000 | Apple, Samsung, Google | Apple, Google, Samsung |
+| Travel photography and all-day battery life | Apple, Samsung, Google | Apple, Samsung, OnePlus |
 
-Across the four answers to the first two questions, the engines did not mention Scrapeless or return a source on `scrapeless.com` or its subdomains. ScrapingBee was the only name on all four shortlists in this run.
+Samsung appeared in all four category-question answers. None of the four selected returned-source lists contained `samsung.com`, even though official links could appear in the answer text. The workflow checks its documented source fields separately from the answer body.
 
-The third question named Scrapeless and asked about n8n setup. It shows what someone who already knows the brand might find. Both engines mentioned Scrapeless. ChatGPT outlined the API key, node installation, and scheduling steps. Eight of its 10 returned URLs matched the official domain. Perplexity suggested getting an API key, installing Scrapeless Official, and configuring prompt input and result storage. Six of its 10 returned URLs matched the official domain.
+Both answers to the named-brand support question mentioned Samsung. ChatGPT returned 5 unique source URLs, 4 on the configured domain; Perplexity returned 10, all on that domain. Some Perplexity sources were India or UK pages, so a domain hit alone did not establish relevance to a US buyer.
 
-The recommendations were read from the original answers. The workflow records brand mentions in the text and domain matches in returned sources as separate fields. Keep the questions, country, and search settings consistent when rerunning the monitor so the history can show where the brand starts or stops appearing.
+Shortlists were manually read from the original answers. The workflow measures literal mentions and returned-source domain hits; it does not rank brands or verify the phones' specifications. One baseline does not establish a trend.
 
 [Case configuration](examples/buyer-questions-case-config.json) · [Live result summary](examples/buyer-questions-case-summary.json)
 

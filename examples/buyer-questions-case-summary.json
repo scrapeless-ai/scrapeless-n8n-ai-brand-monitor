@@ -1,11 +1,11 @@
 {
-  "description": "Selected fields from one live run. Candidate names were read from the answers. Domain matches are from returned sources.",
-  "observation_date": "2026-11-04",
+  "description": "Selected fields from one live native n8n run. Shortlists were manually read from the unchanged original answers. Original answers and exports are retained separately.",
+  "observation_date": "2026-11-09",
   "data_mode": "live",
-  "brand": "Scrapeless",
+  "brand": "Samsung",
   "country": "US",
   "domains": [
-    "scrapeless.com"
+    "samsung.com"
   ],
   "web_search_requested": true,
   "report_complete": true,
@@ -14,107 +14,125 @@
   "baseline": true,
   "prompts": [
     {
-      "id": "product-page-api-shortlist",
-      "text": "Our small team needs to check competitor product prices and stock daily. Some product pages render with JavaScript. Which three managed web scraping APIs should we shortlist, and why? Link to the official product pages.",
-      "names_monitored_brand": false,
-      "observations": [
-        {
-          "engine": "chatgpt",
-          "status": "ok",
-          "brand_mentioned": false,
-          "source_field": "content_references",
-          "source_status": "available",
-          "source_count": 6,
-          "brand_source_found": false,
-          "brand_domain_source_url_count": 0,
-          "recommended_options_from_answer": [
-            "Zyte API",
-            "Bright Data Web Scraper API",
-            "ScrapingBee"
-          ]
-        },
-        {
-          "engine": "perplexity",
-          "status": "ok",
-          "brand_mentioned": false,
-          "source_field": "web_results",
-          "source_status": "available",
-          "source_count": 10,
-          "brand_source_found": false,
-          "brand_domain_source_url_count": 0,
-          "recommended_options_from_answer": [
-            "Decodo Price Scraper API",
-            "ScrapingBee",
-            "ZenRows"
-          ]
-        }
-      ]
+      "id": "smartphone-brands-shortlist",
+      "text": "I'm buying a smartphone in the US for under $1,000. Which three phone brands should I compare for camera quality, battery life, and long-term software support? Explain the tradeoffs and link to official manufacturer pages."
     },
     {
-      "id": "apify-alternatives",
-      "text": "We use Apify to collect public web data. What are three alternatives worth considering if we need JavaScript rendering and managed proxies without running browsers ourselves? Explain who each one fits and link to the official pages.",
-      "names_monitored_brand": false,
-      "observations": [
-        {
-          "engine": "chatgpt",
-          "status": "ok",
-          "brand_mentioned": false,
-          "source_field": "content_references",
-          "source_status": "available",
-          "source_count": 8,
-          "brand_source_found": false,
-          "brand_domain_source_url_count": 0,
-          "recommended_options_from_answer": [
-            "Zyte API",
-            "Bright Data",
-            "ScrapingBee"
-          ]
-        },
-        {
-          "engine": "perplexity",
-          "status": "ok",
-          "brand_mentioned": false,
-          "source_field": "web_results",
-          "source_status": "available",
-          "source_count": 10,
-          "brand_source_found": false,
-          "brand_domain_source_url_count": 0,
-          "recommended_options_from_answer": [
-            "ScraperAPI",
-            "ScrapingBee",
-            "Oxylabs"
-          ]
-        }
-      ]
+      "id": "travel-phone-shortlist",
+      "text": "For travel photography and all-day battery life, which three smartphone brands should a US buyer shortlist? Give one current phone model from each and link to official specifications. Avoid rumors and unreleased products."
     },
     {
-      "id": "scrapeless-n8n-evaluation",
-      "text": "Can I use Scrapeless with n8n to collect ChatGPT and Perplexity answers and their sources for brand monitoring? What should I set up first? Link to the relevant official documentation.",
-      "names_monitored_brand": true,
-      "observations": [
-        {
-          "engine": "chatgpt",
-          "status": "ok",
-          "brand_mentioned": true,
-          "source_field": "content_references",
-          "source_status": "available",
-          "source_count": 10,
-          "brand_source_found": true,
-          "brand_domain_source_url_count": 8,
-          "recommended_options_from_answer": null
-        },
-        {
-          "engine": "perplexity",
-          "status": "ok",
-          "brand_mentioned": true,
-          "source_field": "web_results",
-          "source_status": "available",
-          "source_count": 10,
-          "brand_source_found": true,
-          "brand_domain_source_url_count": 6,
-          "recommended_options_from_answer": null
-        }
-      ]
+      "id": "samsung-support-evaluation",
+      "text": "For a Samsung Galaxy smartphone sold in the US, where can I verify its software update policy, warranty, and repair options? Explain what to check and cite official Samsung pages."
     }
-  ]
+  ],
+  "observations": [
+    {
+      "prompt_id": "samsung-support-evaluation",
+      "engine": "chatgpt",
+      "status": "ok",
+      "brand_mentioned": true,
+      "source_field": "content_references",
+      "source_status": "available",
+      "source_count": 5,
+      "brand_source_found": true,
+      "brand_domain_source_url_count": 4,
+      "recommended_brands_from_answer": null,
+      "answer_sha256": "af2e901b4ed58daf0d9492d6afabd22b2153918c7fb2b6a6575fd0a3a5b56287"
+    },
+    {
+      "prompt_id": "samsung-support-evaluation",
+      "engine": "perplexity",
+      "status": "ok",
+      "brand_mentioned": true,
+      "source_field": "web_results",
+      "source_status": "available",
+      "source_count": 10,
+      "brand_source_found": true,
+      "brand_domain_source_url_count": 10,
+      "recommended_brands_from_answer": null,
+      "answer_sha256": "bc293df85909e82f383e52821e5ab0c50f64b871ab4ea8181b5ac059c3227876"
+    },
+    {
+      "prompt_id": "smartphone-brands-shortlist",
+      "engine": "chatgpt",
+      "status": "ok",
+      "brand_mentioned": true,
+      "source_field": "content_references",
+      "source_status": "available",
+      "source_count": 0,
+      "brand_source_found": false,
+      "brand_domain_source_url_count": 0,
+      "recommended_brands_from_answer": [
+        "Apple",
+        "Samsung",
+        "Google"
+      ],
+      "answer_sha256": "91c8fd9650ee416691b69e0d83fdae62166864997a430324683337166fba498e"
+    },
+    {
+      "prompt_id": "smartphone-brands-shortlist",
+      "engine": "perplexity",
+      "status": "ok",
+      "brand_mentioned": true,
+      "source_field": "web_results",
+      "source_status": "available",
+      "source_count": 10,
+      "brand_source_found": false,
+      "brand_domain_source_url_count": 0,
+      "recommended_brands_from_answer": [
+        "Apple",
+        "Google",
+        "Samsung"
+      ],
+      "answer_sha256": "e946496ea32b83445981497d22742795b1517655ecfa91b7b87d16da78cee99b"
+    },
+    {
+      "prompt_id": "travel-phone-shortlist",
+      "engine": "chatgpt",
+      "status": "ok",
+      "brand_mentioned": true,
+      "source_field": "content_references",
+      "source_status": "available",
+      "source_count": 2,
+      "brand_source_found": false,
+      "brand_domain_source_url_count": 0,
+      "recommended_brands_from_answer": [
+        "Apple",
+        "Samsung",
+        "Google"
+      ],
+      "answer_sha256": "95e1374797f620eb3d5d3958fb86c60fdb3829feeec694162f8a0ef132f0d85a"
+    },
+    {
+      "prompt_id": "travel-phone-shortlist",
+      "engine": "perplexity",
+      "status": "ok",
+      "brand_mentioned": true,
+      "source_field": "web_results",
+      "source_status": "available",
+      "source_count": 10,
+      "brand_source_found": false,
+      "brand_domain_source_url_count": 0,
+      "recommended_brands_from_answer": [
+        "Apple",
+        "Samsung",
+        "OnePlus"
+      ],
+      "answer_sha256": "35bf79bc2c2bb7ed4a8f8c2a70bde5ecf5d3b80cb63df4a30c8ab0ae6ded8c88"
+    }
+  ],
+  "interpretation": [
+    "The two category prompts do not name Samsung. All four category answers mentioned Samsung; none of their selected returned-source lists contained samsung.com.",
+    "Official Samsung links can occur in answer text even when absent from the separate returned-source field. These are different measurements.",
+    "The named-brand support question mentioned Samsung and returned Samsung-domain sources in both engines.",
+    "Domain matching does not verify regional relevance: the Perplexity source list also contained India and UK pages for a US-focused question.",
+    "One run is not a platform-wide brand ranking, a product recommendation, or evidence of improvement over time."
+  ],
+  "validation": {
+    "native_nodes": true,
+    "persisted_in_n8n": true,
+    "csv_json_agree": true,
+    "previous_run_id": null
+  }
 }
